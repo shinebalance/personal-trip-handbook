@@ -20,7 +20,7 @@ const ja = {
   language: '表示言語', results: '件の候補', credits: '写真クレジット', itineraryTitle: '旅の予定', itinerarySubtitle: '行きたい場所を、ひとつずつ。',
   notFound: 'このページは見つかりませんでした', back: '行き先に戻る', noteEmpty: 'メモはまだありません', loadingMap: '読み込みに時間がかかる場合は、地図を別画面で開けます。',
   categories: { books: '本・ZINE', anime: 'アニメ', music: '音楽', design: '文具・雑貨', electronics: '電気街', shopping: '買い物', walk: '街歩き', cafe: 'カフェ', meal: 'ごはん', sweet: 'おやつ', other: 'その他' },
-  areas: { hongdae: '弘大', yeonhui: '延禧洞', yongsan: '龍山', gwanghwamun: '光化門', seongsu: '聖水', jamsil: '蚕室', jongno: '鐘路', myeongdong: '明洞', anywhere: '街のどこかで', unconfirmed: 'エリア確認中' },
+  areas: { hongdae: '弘大', hapjeong: '合井', sinchon: '新村', yeonhui: '延禧洞', yongsan: '龍山', gwanghwamun: '光化門', seongsu: '聖水', jamsil: '蚕室', jongno: '鐘路', myeongdong: '明洞', 'seoul-station': 'ソウル駅', seocho: '瑞草', gangnam: '江南', magok: '麻谷', anywhere: '街のどこかで', unconfirmed: 'エリア確認中' },
 };
 type Dictionary = Omit<typeof ja, 'categories' | 'areas'> & { categories: Record<string, string>; areas: Record<string, string> };
 const ko: Dictionary = {
@@ -42,7 +42,7 @@ const ko: Dictionary = {
   language: '표시 언어', results: '개의 후보', credits: '사진 출처', itineraryTitle: '여행 일정', itinerarySubtitle: '가고 싶은 곳을 하나씩.',
   notFound: '페이지를 찾을 수 없어요', back: '가고 싶은 곳으로', noteEmpty: '아직 메모가 없어요', loadingMap: '로딩이 오래 걸리면 지도를 새 창에서 열 수 있어요.',
   categories: { books: '책 · 진', anime: '애니메이션', music: '음악', design: '문구 · 소품', electronics: '전자상가', shopping: '쇼핑', walk: '산책', cafe: '카페', meal: '식사', sweet: '간식', other: '기타' },
-  areas: { hongdae: '홍대', yeonhui: '연희동', yongsan: '용산', gwanghwamun: '광화문', seongsu: '성수', jamsil: '잠실', jongno: '종로', myeongdong: '명동', anywhere: '걷다가 만나는 곳', unconfirmed: '동네 확인 중' },
+  areas: { hongdae: '홍대', hapjeong: '합정', sinchon: '신촌', yeonhui: '연희동', yongsan: '용산', gwanghwamun: '광화문', seongsu: '성수', jamsil: '잠실', jongno: '종로', myeongdong: '명동', 'seoul-station': '서울역', seocho: '서초', gangnam: '강남', magok: '마곡', anywhere: '걷다가 만나는 곳', unconfirmed: '동네 확인 중' },
 };
 const en: Dictionary = {
   displayMode: 'Display mode', cardView: 'Cards', areaMapView: 'Neighborhood map',
@@ -63,6 +63,6 @@ const en: Dictionary = {
   language: 'Display language', results: 'ideas', credits: 'Photo credit', itineraryTitle: 'My itinerary', itinerarySubtitle: 'One good place at a time.',
   notFound: 'This page could not be found', back: 'Back to places', noteEmpty: 'No notes yet', loadingMap: 'If loading takes a while, you can open the map in another tab.',
   categories: { books: 'Books & zines', anime: 'Anime', music: 'Music', design: 'Stationery', electronics: 'Electronics', shopping: 'Shopping', walk: 'Walks', cafe: 'Cafés', meal: 'Meals', sweet: 'Sweet things', other: 'Other' },
-  areas: { hongdae: 'Hongdae', yeonhui: 'Yeonhui-dong', yongsan: 'Yongsan', gwanghwamun: 'Gwanghwamun', seongsu: 'Seongsu', jamsil: 'Jamsil', jongno: 'Jongno', myeongdong: 'Myeongdong', anywhere: 'Along the way', unconfirmed: 'Area to confirm' },
+  areas: { hongdae: 'Hongdae', hapjeong: 'Hapjeong', sinchon: 'Sinchon', yeonhui: 'Yeonhui-dong', yongsan: 'Yongsan', gwanghwamun: 'Gwanghwamun', seongsu: 'Seongsu', jamsil: 'Jamsil', jongno: 'Jongno', myeongdong: 'Myeongdong', 'seoul-station': 'Seoul Station', seocho: 'Seocho', gangnam: 'Gangnam', magok: 'Magok', anywhere: 'Along the way', unconfirmed: 'Area to confirm' },
 };
 export const dictionaries: Record<Locale, Dictionary> = { ja, ko, en };

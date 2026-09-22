@@ -142,11 +142,17 @@ entries:
       en: International Electronics Center
     koreanName: 국제전자센터
     description:
-      ja: 現地の電気街は見たい。所在地を確認してから予定に入れる。
-      ko: 현지 전자상가를 보고 싶다. 위치를 확인한 뒤 일정에 넣기.
-      en: Explore a local electronics center. Confirm the location before planning a visit.
-    area: unconfirmed
+      ja: 現地の電気街は見たい。住所は瑞草・南部ターミナル方面と確認した。
+      ko: 현지 전자상가를 보고 싶다. 주소는 서초 · 남부터미널 쪽으로 확인했다.
+      en: Explore a local electronics center. The address is confirmed as Seocho, near Nambu Terminal.
+    area: seocho
     category: electronics
+    address: '서울 서초구 효령로 304'
+    query: '국제전자센터 서울 서초구 효령로 304'
+    sourceUrl: 'https://m.saramin.co.kr/job-search/view?rec_idx=54776712&t_category=company-info&t_content=generic'
+    verifiedAt: '2026-09-22'
+    related:
+      - cafe-la-lee-seocho
   - id: yongsan-electronics
     type: spot
     title:
@@ -210,9 +216,14 @@ entries:
       en: Stationery and CDs. Check the shopping list here too.
     area: gwanghwamun
     category: design
+    address: '서울특별시 종로구 종로 1 지하 1층'
+    query: '핫트랙스 광화문점 서울 종로구 종로 1'
+    sourceUrl: 'https://www.koreatriptips.com/shopping/1916000.html'
+    verifiedAt: '2026-09-22'
     related:
       - stationery
       - cds
+      - kyobo-gwanghwamun
   - id: lotte-mart
     type: spot
     title:
@@ -227,6 +238,9 @@ entries:
     area: anywhere
     category: shopping
     priority: if-found
+    related:
+      - lotte-mart-seoul-station
+      - lotte-mart-jamsil
   - id: olive-young
     type: spot
     title:
@@ -241,6 +255,8 @@ entries:
     area: anywhere
     category: shopping
     priority: if-found
+    related:
+      - olive-young-hongdae
   - id: convenience-stores
     type: spot
     title:
@@ -341,6 +357,8 @@ entries:
       en: A coffee break along the way.
     area: anywhere
     category: cafe
+    related:
+      - mega-coffee-hongdae
   - id: fritz-coffee
     type: spot
     title:
