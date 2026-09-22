@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env*
+!.env.example
+src/generated/
+.DS_Store
+test-results/
+*.tsbuildinfo
