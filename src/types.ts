@@ -5,6 +5,7 @@ export type Entry = {
   area: string; category: string; priority: 'candidate' | 'if-time' | 'if-found';
   koreanName?: string; address?: string; query?: string; mapsUrl?: string;
   website?: string; sourceUrl?: string; verifiedAt?: string; related: string[]; source: string;
+  location?: { lat: number; lng: number; sourceUrl: string; checkedAt: string; kind: 'place' | 'area' };
 };
 export type Note = { id: string; title: Localized; body: string; source: string };
 export type Day = {

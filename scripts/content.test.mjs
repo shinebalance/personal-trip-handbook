@@ -33,6 +33,17 @@ test('collections and dated itineraries resolve stable references', () => {
     assert.equal(result.days[0].events[0].ref, result.entries[0].id);
   });
 });
+test('map locations retain their coordinates, source and precision; unknown locations remain unpinned', () => {
+  const location = { lat: 37.5580543, lng: 126.9260821, sourceUrl: 'https://example.com/verified-place', checkedAt: '2026-09-22' };
+  withNotes({ 'shop.md': frontmatter({ ...spot, location }), 'chain.md': frontmatter({ ...spot, id: 'branch-undecided' }) }, directory => {
+    const result = loadContent(directory);
+    assert.deepEqual(result.entries.find(entry => entry.id === spot.id).location, { ...location, kind: 'place' });
+    assert.equal(result.entries.find(entry => entry.id === 'branch-undecided').location, undefined);
+  });
+  for (const invalid of [{ ...location, lat: 91 }, { ...location, lng: -181 }, { ...location, lat: '37.5' }, { ...location, lng: undefined }, { ...location, sourceUrl: undefined }, { ...location, sourceUrl: 'javascript:alert(1)' }, { ...location, kind: 'guessed' }]) {
+    withNotes({ 'invalid-map.md': frontmatter({ ...spot, location: invalid }) }, directory => assert.throws(() => loadContent(directory), /invalid-map.md/));
+  }
+});
 test('bad content cannot replace the live site: duplicate IDs, unknown references, accommodation, invalid URLs and dates fail with context', () => {
   const cases = [
     [{ 'first.md': frontmatter(spot), 'duplicate.md': frontmatter(spot) }, /duplicate ID/],

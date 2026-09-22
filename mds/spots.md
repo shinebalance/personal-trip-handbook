@@ -2,6 +2,12 @@
 type: collection
 entries:
   - id: animate-hongdae
+    location:
+      lat: 37.5580543
+      lng: 126.9260821
+      kind: place
+      sourceUrl: 'https://www.waze.com/live-map/directions/kr/seoul/animate-hongdae?to=place.ChIJIS5I20WZfDUR94oKsom82WA'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: Animate 弘大
@@ -19,6 +25,12 @@ entries:
     sourceUrl: 'https://www.animate.co.jp/shop/hongdae/'
     verifiedAt: '2026-09-22'
   - id: thanks-books
+    location:
+      lat: 37.5488222
+      lng: 126.9176773
+      kind: place
+      sourceUrl: 'https://www.koreaetour.com/thanks-books/'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: THANKS BOOKS
@@ -32,6 +44,12 @@ entries:
     area: hongdae
     category: books
   - id: object
+    location:
+      lat: 37.5557150814061
+      lng: 126.929810541616
+      kind: place
+      sourceUrl: 'https://ontrip.kr/en/travel-guides/details/4030833'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: object
@@ -46,6 +64,12 @@ entries:
     category: design
     priority: if-time
   - id: gimbab-records
+    location:
+      lat: 37.55826
+      lng: 126.92476
+      kind: place
+      sourceUrl: 'https://mapcarta.com/N4968397709'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: Gimbab Records
@@ -74,6 +98,12 @@ entries:
     category: music
     priority: if-time
   - id: figure-friends
+    location:
+      lat: 37.5566069
+      lng: 126.9250454
+      kind: place
+      sourceUrl: 'https://www.waze.com/live-map/directions/kr/seoul/figure-friends?to=place.ChIJ4-MqsMSYfDURdbMlub1IS0w'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: Figure Friends
@@ -145,6 +175,12 @@ entries:
     category: books
     priority: if-time
   - id: kyobo-gwanghwamun
+    location:
+      lat: 37.570975
+      lng: 126.9777592
+      kind: place
+      sourceUrl: 'https://kr.near-place.com/kyobo-bookstore-gwanghwamun-1-jong-ro-jongno-1il2i3sam4sa-jongno-gu'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: 教保文庫 光化門店
@@ -220,6 +256,12 @@ entries:
     category: shopping
     priority: if-found
   - id: lotte-world-tower
+    location:
+      lat: 37.51255
+      lng: 127.10268
+      kind: place
+      sourceUrl: 'https://mapcarta.com/N12520558001'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: ロッテワールドタワー
@@ -234,6 +276,12 @@ entries:
     category: walk
     priority: if-time
   - id: naksan-park
+    location:
+      lat: 37.58055
+      lng: 127.00721
+      kind: area
+      sourceUrl: 'https://mapcarta.com/W229027411'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: 駱山公園
@@ -248,6 +296,12 @@ entries:
     category: walk
     priority: if-time
   - id: myeongdong
+    location:
+      lat: 37.5642
+      lng: 126.98377
+      kind: area
+      sourceUrl: 'https://mapcarta.com/25947090'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: 明洞
