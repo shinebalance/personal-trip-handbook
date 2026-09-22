@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 import contentJson from './generated/content.json';
 import { dictionaries, text } from './i18n';
 import type { Content, Entry, Locale } from './types';
+import AreaMap from './AreaMap';
 
 const content = contentJson as Content;
 type View = 'spots' | 'wishes' | 'itinerary' | 'notes';
@@ -33,6 +34,7 @@ export default function App() {
   const [category, setCategory] = useState('all');
   const [priority, setPriority] = useState('all');
   const [onlyChecked, setOnlyChecked] = useState(false);
+  const [layout, setLayout] = useState<'cards' | 'map'>('cards');
   const [checked, setChecked] = useState<string[]>(() => { const value = stored<unknown>('seoul-checked', []); return Array.isArray(value) ? value.filter((id): id is string => typeof id === 'string') : []; });
   const [toast, setToast] = useState('');
   const t = dictionaries[locale];
@@ -102,12 +104,13 @@ export default function App() {
           <div className="filter-top"><label className="search-box"><Search size={20} /><input type="search" placeholder={t.search} value={search} onChange={event => setSearch(event.target.value)} aria-label={t.search} /></label><label className="select-box"><MapPin size={17} /><select value={area} onChange={event => setArea(event.target.value)} aria-label={t.allAreas}><option value="all">{t.allAreas}</option>{areas.map(a => <option value={a} key={a}>{t.areas[a] || a}</option>)}</select><ChevronDown size={15} /></label><label className="select-box priority-select"><SlidersHorizontal size={16} /><select value={priority} onChange={event => setPriority(event.target.value)} aria-label={t.allPriorities}><option value="all">{t.allPriorities}</option>{(['candidate', 'if-time', 'if-found'] as const).map(p => <option value={p} key={p}>{t[p]}</option>)}</select><ChevronDown size={15} /></label></div>
           <div className="filter-bottom"><div className="category-list" role="group" aria-label={t.allCategories}>{['all', ...categories].map(cat => <button aria-pressed={category === cat} className={category === cat ? 'active' : ''} key={cat} onClick={() => setCategory(cat)}>{cat === 'all' ? t.allCategories : t.categories[cat] || cat}</button>)}</div><label className="checked-filter"><input type="checkbox" checked={onlyChecked} onChange={event => setOnlyChecked(event.target.checked)} /><span>{t.showCompleted}</span></label></div>
         </div>
-        <div className="cards-grid">{filtered.map((entry, index) => { const Icon = categoryIcons[entry.category] || Bookmark; const done = checked.includes(entry.id); return <article className={`place-card tone-${entry.category} ${done ? 'is-checked' : ''}`} key={entry.id}>
+        {page.view === 'spots' && <div className="view-switch" role="group" aria-label={t.displayMode}><button aria-pressed={layout === 'cards'} onClick={() => setLayout('cards')}><BookOpen size={17} />{t.cardView}</button><button aria-pressed={layout === 'map'} onClick={() => setLayout('map')}><MapIcon size={17} />{t.areaMapView}</button></div>}
+        {page.view === 'spots' && layout === 'map' ? <AreaMap entries={filtered} locale={locale} onOpen={openEntry} mapUrl={mapUrl} /> : <div className="cards-grid">{filtered.map((entry, index) => { const Icon = categoryIcons[entry.category] || Bookmark; const done = checked.includes(entry.id); return <article className={`place-card tone-${entry.category} ${done ? 'is-checked' : ''}`} key={entry.id}>
           <div className="card-top"><span className="category-icon"><Icon size={25} strokeWidth={1.5} /></span><span className="card-category">{t.categories[entry.category] || entry.category}</span><button className={`check-button ${done ? 'checked' : ''}`} aria-label={`${done ? t.completed : t.check}: ${text(entry.title, locale)}`} aria-pressed={done} onClick={() => toggle(entry.id)}>{done ? <Check size={18} /> : <Bookmark size={18} strokeWidth={1.5} />}</button></div>
           <div className="card-area"><MapPin size={12} /><span>{t.areas[entry.area] || entry.area}</span><span className="card-index">{String(index + 1).padStart(2, '0')}</span></div>
           <button className="card-title" onClick={() => openEntry(entry)}><h3>{text(entry.title, locale)}</h3></button><p className="korean-name" lang="ko">{locale === 'ko' ? text(entry.title, 'en') : entry.koreanName}</p><p className="card-description">{text(entry.description, locale)}</p>
           <div className="card-footer"><span className={`priority ${entry.priority}`}><span />{t[entry.priority]}</span><button onClick={() => openEntry(entry)} aria-label={`${t.details}: ${text(entry.title, locale)}`}>{t.details}<ArrowUpRight size={15} /></button>{entry.type === 'spot' && <a className="map-mini" href={mapUrl(entry)} target="_blank" rel="noreferrer" aria-label={`${entry.address ? t.map : t.mapSearch}: ${text(entry.title, locale)}`}><MapIcon size={18} /></a>}</div>
-        </article>; })}</div>
+        </article>; })}</div>}
         {filtered.length === 0 && <div className="empty-state"><Search size={35} strokeWidth={1.3} /><h3>{t.noResults}</h3><p>{t.noResultsHint}</p><button className="raised-button" onClick={reset}>{t.reset}<ArrowRight size={16} /></button></div>}
         <p className="local-caption"><Check size={14} />{t.localOnly}</p>
       </section>}

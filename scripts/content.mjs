@@ -15,6 +15,11 @@ const entrySchema = z.object({
   koreanName: z.string().optional(), address: z.string().optional(), query: z.string().optional(),
   mapsUrl: url.optional(), website: url.optional(), sourceUrl: url.optional(),
   verifiedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),
+  location: z.object({
+    lat: z.number().min(-90).max(90), lng: z.number().min(-180).max(180),
+    sourceUrl: url, checkedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    kind: z.enum(['place', 'area']).default('place'),
+  }).strict().optional(),
   related: z.array(id).default([]),
 }).strict();
 const daySchema = z.object({

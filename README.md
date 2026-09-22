@@ -26,6 +26,7 @@ npm run preview
 - エリア・カテゴリ・希望条件・チェック済みで絞り込み。3言語を横断して検索。
 - スポット詳細、Google Mapsリンク、住所コピー、共有用URL。
 - APIキー設定後は詳細パネルでGoogle Mapsをプレビュー。
+- 「エリア地図で見る」で、絞り込んだスポットを番号付きピンで表示。一覧・ピンの選択が連動し、詳細パネルも開けます。PCは左右、スマホは地図→一覧の配置です。
 - チェックと言語設定を端末内に保存。端末間・他の人とは同期しません。
 - 自由なMarkdownの掲載、構造化したMarkdownからカード・旅程を生成。
 - ホテルの情報を掲載する機能はありません。
@@ -66,6 +67,23 @@ koreanName: 관심 있는 서점
 | category | `books`, `anime`, `music`, `design`, `electronics`, `shopping`, `walk`, `cafe`, `meal`, `sweet`, `other` |
 
 新しいエリアやカテゴリ名も使えます。辞書にない値はそのまま表示されるので、必要なら `src/i18n.ts` に3言語のラベルを追加してください。
+
+### エリア地図にピンを追加する
+
+スポットのfrontmatter（コレクションの場合は各entry）に `location` を追加します。Markdownを更新してpushすると地図にも反映され、サーバーやGeocoding APIは不要です。
+
+```yaml
+location:
+  lat: 37.5580543
+  lng: 126.9260821
+  kind: place
+  sourceUrl: 'https://www.waze.com/live-map/directions/kr/seoul/animate-hongdae?to=place.ChIJIS5I20WZfDUR94oKsom82WA'
+  checkedAt: '2026-09-22'
+```
+
+`lat` / `lng` は数値、出典URLと確認日は必須です。`kind` は店舗・施設なら `place`（既定）、明洞など街の代表位置なら `area` にします。地図の表示中心ではなく、目的地の座標を使用してください。住所だけでは自動的にピンになりません。
+
+初期データは弘大5件、光化門・蚕室・鐘路・明洞の各1件、計9件に位置を登録しています。未確認の位置や支店未選択のチェーン店は「位置・支店の確認待ち」に残し、推測した位置にピンを置きません。位置の出典は各選択カードから参照できます。登録座標の一部はOpenStreetMap由来で、地図下にクレジットを表示しています。
 
 ### 日程を後から追加する
 
@@ -115,6 +133,20 @@ events:
 5. **APIの制限** は **キーを制限 → Maps Embed APIのみ** にします。ローカルで試す場合は必要に応じて `http://localhost:5173/*` と `http://127.0.0.1:5173/*` を追加します。
 6. GitHubで **Settings → Secrets and variables → Actions → New repository secret** を開き、名前を **`GOOGLE_MAPS_EMBED_API_KEY`**、値を作成したキーにして保存します。
 7. **Actions → Publish travel handbook → Run workflow** で再ビルドします。スポット詳細で地図が表示されます。
+
+### 複数ピンのエリア地図を有効にする（既存キーがある場合）
+
+1. 同じGoogle Cloudプロジェクトの **APIとサービス → ライブラリ** で **Maps JavaScript API** を有効にします。
+2. 使用中のキーの **APIの制限** に、**Maps Embed API** と **Maps JavaScript API** の両方を追加します。ウェブサイト制限は上記のままで使えます。
+3. 既存の `GOOGLE_MAPS_EMBED_API_KEY` をそのまま使う場合、GitHub Secretの追加・変更は不要です。このコードをpushしてPagesを再デプロイしてください。
+
+キーを分けたい場合のみ、JavaScript API用のキーをGitHub Secret **`GOOGLE_MAPS_API_KEY`** に設定します。エリア地図はこのキーを優先し、未設定なら既存のEmbed用キーを使用します。
+
+Maps JavaScript APIには請求先の設定が必要で、地図の読み込みは利用量に応じた課金対象です。Cloud Consoleで予算通知とクォータを確認してください。SDKは「エリア地図で見る」を選んだ際、表示対象に登録済みの位置がある場合にだけ読み込みます。Places APIやGeocoding APIは使用しません。
+
+キーなし・通信失敗時も候補一覧と外部地図リンクは使用できます。地図のベースラベルは現地で読みやすい韓国語に固定し、スポット名・詳細・操作UIは3言語で切り替えます。
+
+公式資料：[Maps JavaScript APIの設定](https://developers.google.com/maps/documentation/javascript/cloud-setup)、[利用と課金](https://developers.google.com/maps/documentation/javascript/usage-and-billing)。
 
 ローカル開発では `.env.example` を `.env.local` にコピーし、`VITE_GOOGLE_MAPS_EMBED_API_KEY` にキーを設定して開発サーバーを再起動してください。
 
