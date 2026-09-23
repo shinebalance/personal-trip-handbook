@@ -2,6 +2,12 @@
 type: collection
 entries:
   - id: kyobo-hapjeong
+    location:
+      lat: 37.5500215
+      lng: 126.9123444
+      kind: place
+      sourceUrl: 'https://store.kyobobook.co.kr/store-info/049'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: 教保文庫 合井店
@@ -22,6 +28,12 @@ entries:
     related:
       - kyobo-gwanghwamun
   - id: emart-sinchon
+    location:
+      lat: 37.5549944655605
+      lng: 126.935997574268
+      kind: place
+      sourceUrl: 'https://eapp.emart.com/branch/view.do?id=1139'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: イーマート 新村店
@@ -39,6 +51,12 @@ entries:
     sourceUrl: 'https://eapp.emart.com/branch/view.do?id=1139'
     verifiedAt: '2026-09-22'
   - id: mega-coffee-hongdae
+    location:
+      lat: 37.5562009
+      lng: 126.9242422
+      kind: place
+      sourceUrl: 'https://www.wowpass.io/ko/community/poi/detail/10978'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: MEGA MGC COFFEE 弘大入口駅店
@@ -46,9 +64,9 @@ entries:
       en: MEGA MGC COFFEE Hongik Univ. Station
     koreanName: 메가MGC커피 홍대입구역점
     description:
-      ja: 弘大の散策中のコーヒー休憩に。チェーンのなかで支店を決める場合の行き先。
-      ko: 홍대를 걷다가 커피 한 잔. 체인 중에서 지점을 정할 때의 목적지.
-      en: A coffee break while walking around Hongdae — the branch to head for when picking one.
+      ja: 'Figure Friendsから直線約80m、オリーブヤング弘大タウンから約45m。弘大散策中のコーヒー休憩に選んだ支店。'
+      ko: '피규어 프렌즈에서 직선 약 80m, 올리브영 홍대타운에서 약 45m. 홍대 산책 중 커피 휴식을 위해 선택한 지점.'
+      en: 'The selected Hongdae coffee stop: about 80 m in a straight line from Figure Friends and 45 m from Olive Young Hongdae Town.'
     area: hongdae
     category: cafe
     address: '서울 마포구 홍익로6길 48'
@@ -57,6 +75,12 @@ entries:
     related:
       - mega-coffee
   - id: olive-young-hongdae
+    location:
+      lat: 37.5566
+      lng: 126.9243375
+      kind: place
+      sourceUrl: 'https://triple.guide/attractions/781f33a1-f4ac-45e5-a330-b3ca2e840b1c'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: オリーブヤング 弘大タウン
@@ -76,6 +100,12 @@ entries:
     related:
       - olive-young
   - id: emart-yongsan
+    location:
+      lat: 37.5288942
+      lng: 126.9656861
+      kind: place
+      sourceUrl: 'https://eapp.emart.com/branch/view.do?id=1060'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: イーマート 龍山店
@@ -96,6 +126,12 @@ entries:
     related:
       - yongsan-electronics
   - id: lotte-mart-seoul-station
+    location:
+      lat: 37.555782
+      lng: 126.970505
+      kind: place
+      sourceUrl: 'https://kr.near-place.com/lotte-mart-seoul-station-426-cheongpa-ro-jung-gu'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: ロッテマート ゼタプレックス ソウル駅店
@@ -114,6 +150,12 @@ entries:
     related:
       - lotte-mart
   - id: teumsae-ramyeon-myeongdong
+    location:
+      lat: 37.56302611598872
+      lng: 126.98597893692475
+      kind: place
+      sourceUrl: 'https://www.tabling.co.kr/place/677cc7bc66de5f06987549be'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: トゥムセラーメン 明洞本店
@@ -133,6 +175,12 @@ entries:
     related:
       - myeongdong
   - id: cafe-la-lee-seocho
+    location:
+      lat: 37.484177591263936
+      lng: 127.01937632068875
+      kind: place
+      sourceUrl: 'https://www.tabling.co.kr/place/677cca9666de5f06987b8e77'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: カフェラリ 瑞草店
@@ -151,6 +199,12 @@ entries:
     related:
       - international-electronics
   - id: lotte-mart-jamsil
+    location:
+      lat: 37.5117013922435
+      lng: 127.096471444135
+      kind: place
+      sourceUrl: 'https://www.placeview.co.kr/id/MjAyMDM0MDgg'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: ロッテマート ゼタプレックス 蚕室店
@@ -171,6 +225,12 @@ entries:
       - lotte-world-tower
       - lotte-mart
   - id: traders-magok
+    location:
+      lat: 37.5608751008131
+      lng: 126.824695969186
+      kind: place
+      sourceUrl: 'https://eapp.emart.com/branch/view.do?id=2023'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: トレーダース ホールセールクラブ 麻谷店
@@ -190,6 +250,12 @@ entries:
     sourceUrl: 'https://eapp.emart.com/branch/view.do?id=2023'
     verifiedAt: '2026-09-22'
   - id: kyobo-gangnam
+    location:
+      lat: 37.5037373
+      lng: 127.0240583
+      kind: place
+      sourceUrl: 'https://store.kyobobook.co.kr/store-info/015'
+      checkedAt: '2026-09-22'
     type: spot
     title:
       ja: 教保文庫 江南店
@@ -212,4 +278,4 @@ entries:
       - kyobo-gwanghwamun
 ---
 
-`mds/2026-09-22_訪問店舗リスト.md` で住所を確認した店舗をカードにしたもの。原文のメモはそのまま「旅のメモ」に残しています。座標は未確認のため、エリア地図のピンには登録していません。
+`mds/2026-09-22_訪問店舗リスト.md` で住所を確認した店舗をカードにしたもの。原文のメモはそのまま「旅のメモ」に残しています。2026-09-22に各店舗の地図座標も確認し、エリア地図のピンに登録しました。位置の出典は各カードから開けます。
