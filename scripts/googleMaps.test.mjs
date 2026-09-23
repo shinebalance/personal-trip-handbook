@@ -73,11 +73,12 @@ test('numbered pins project actual coordinates, select accessibly, and remove al
   class LatLng { constructor(position) { Object.assign(this, position); } }
   let clicks = 0;
   const position = { lat: 37.5580543, lng: 126.9260821 };
-  const pin = createNumberPin({ OverlayView, LatLng }, {}, position, 3, 'Animate 弘大', () => clicks++);
+  const pin = createNumberPin({ OverlayView, LatLng }, {}, position, 3, 'Animate 弘大', () => clicks++, 3);
   const button = pane.children[0];
   assert.deepEqual({ ...projected }, position);
   assert.equal(button.textContent, '03');
   assert.equal(button.attributes['aria-label'], '3. Animate 弘大');
+  assert.equal(button.attributes['data-count'], '3');
   assert.equal(button.style.left, '123px');
   assert.equal(button.style.top, '456px');
   button.dispatchEvent(new Event('click'));

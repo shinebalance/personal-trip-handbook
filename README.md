@@ -21,7 +21,7 @@ npm run preview
 
 ## できること
 
-- 元メモから整理した33件の行き先、15件の食・買い物候補。訪問店舗リストの支店（教保文庫の各店、イーマート、ロッテマート、オリーブヤング、MEGA MGC COFFEE、틈새라면、카페라리、トレーダース）も住所付きのカードにしています。
+- 50件の行き先、18件の食・買い物候補。友人のソウル旅行候補ガイドに載る店舗20件を追加し、既存のトゥムセラーメンは重複登録せず地図リンクを補っています。
 - 3言語のUI、名前・訪問理由。韓国語名や住所を併記。
 - エリア・カテゴリ・希望条件・チェック済みで絞り込み。3言語を横断して検索。
 - スポット詳細、Google Mapsリンク、住所コピー、共有用URL。
@@ -57,13 +57,13 @@ koreanName: 관심 있는 서점
 
 任意項目：`address`（韓国語住所）、`query`（地図検索語の上書き）、`mapsUrl`（確認済み地図URL）、`website`（公式サイト）、`sourceUrl`（出典・参考）、`verifiedAt`（文字列の日付）、`related`（関連ID配列）。URLは `https://` のみ許可します。
 
-複数項目を一つのファイルにまとめる場合は `type: collection` と `entries:` 配列を使用します。例は [mds/spots.md](mds/spots.md)、[mds/stores.md](mds/stores.md)、[mds/wishlist.md](mds/wishlist.md) を参照。[mds/stores.md](mds/stores.md) は [mds/2026-09-22_訪問店舗リスト.md](mds/2026-09-22_訪問店舗リスト.md) で住所を確認した支店をカード化したもので、元の自由メモも「旅のメモ」にそのまま残しています。
+複数項目を一つのファイルにまとめる場合は `type: collection` と `entries:` 配列を使用します。例は [mds/spots.md](mds/spots.md)、[mds/stores.md](mds/stores.md)、[mds/wishlist.md](mds/wishlist.md) を参照。[mds/stores.md](mds/stores.md) は [mds/2026-09-22_訪問店舗リスト.md](mds/2026-09-22_訪問店舗リスト.md) で住所を確認した支店をカード化したもので、元の自由メモも「旅のメモ」にそのまま残しています。[mds/friend-recommendations-2026-09-23.md](mds/friend-recommendations-2026-09-23.md) には友人の PDF から店舗だけを追加しています。料理の説明や価格・営業時間などは PDF を参照し、アプリは韓国語名・住所・地図リンクをすぐ使える形にしています。
 
 | 項目 | 値 |
 | --- | --- |
 | type | `spot`（場所）、`wish`（食・買い物）、`day`（旅程）、`note`（自由メモ）、`collection`（複数のspot/wish） |
 | priority | `candidate`（候補、既定）、`if-time`（行けたら）、`if-found`（見かけたら） |
-| area | `hongdae`, `hapjeong`, `sinchon`, `yeonhui`, `yongsan`, `gwanghwamun`, `seongsu`, `jamsil`, `jongno`, `myeongdong`, `seoul-station`, `seocho`, `gangnam`, `magok`, `anywhere`, `unconfirmed` |
+| area | `hongdae`, `hapjeong`, `sangsu`, `sinchon`, `yeonhui`, `yongsan`, `gwanghwamun`, `city-hall`, `gongdeok`, `mapo`, `aegogae`, `gyeongbokgung`, `seongsu`, `jamsil`, `jongno`, `myeongdong`, `seoul-station`, `seocho`, `gangnam`, `magok`, `anywhere`, `unconfirmed` |
 | category | `books`, `anime`, `music`, `design`, `electronics`, `shopping`, `walk`, `cafe`, `meal`, `sweet`, `other` |
 
 新しいエリアやカテゴリ名も使えます。辞書にない値はそのまま表示されるので、必要なら `src/i18n.ts` に3言語のラベルを追加してください。
@@ -83,7 +83,7 @@ location:
 
 `lat` / `lng` は数値、出典URLと確認日は必須です。`kind` は店舗・施設なら `place`（既定）、明洞など街の代表位置なら `area` にします。地図の表示中心ではなく、目的地の座標を使用してください。住所だけでは自動的にピンになりません。
 
-2026-09-22時点で、全30スポットに位置を登録しています（既存9件＋今回確認した21件）。龍山の電気街などはエリアの代表位置、店舗は確認した店舗・建物の位置です。支店カードと重複するロッテマート・オリーブヤング・MEGA Coffeeの共通メモは、IDと関連リンクを保ったまま「食べたい・買いたい」へ移しました。選定理由と座標の確認方法は[位置調査メモ](docs/spot-location-research-2026-09-22.md)を参照してください。今後追加する未確認の位置や支店未選択の店舗は「位置・支店の確認待ち」に残し、推測した位置にピンを置きません。位置の出典は各選択カードから参照できます。登録座標の一部はOpenStreetMap由来で、地図下にクレジットを表示しています。
+2026-09-23時点で、全50スポットに位置を登録しています。龍山の電気街などはエリアの代表位置、店舗は確認した店舗・建物の位置です。友人のガイドに載る20店舗は、PDF の NAVER Map リンクをカードと詳細画面から直接開けます。支店カードと重複するロッテマート・オリーブヤング・MEGA Coffeeの共通メモは、IDと関連リンクを保ったまま「食べたい・買いたい」へ移しました。初期データの選定理由と座標の確認方法は[位置調査メモ](docs/spot-location-research-2026-09-22.md)を参照してください。今後追加する未確認の位置や支店未選択の店舗は「位置・支店の確認待ち」に残し、推測した位置にピンを置きません。位置の出典は各選択カードから参照できます。登録座標の一部はOpenStreetMap由来で、地図下にクレジットを表示しています。
 
 ### 日程を後から追加する
 

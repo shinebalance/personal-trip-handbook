@@ -6,7 +6,7 @@ import type { Entry, Locale } from './types';
 
 const copy = {
   ja: {
-    title: '地図で、次の寄り道を。', hint: '番号を選ぶと、一覧と地図が連動します。',
+    title: '地図で、次の寄り道を。', hint: '番号を選ぶと一覧と地図が連動。同じ建物のピンは押すたび店が切り替わります。',
     pinned: '件をピン表示', pending: '位置・支店の確認待ち', pendingHint: '位置が未登録の候補は、ピンを表示していません。',
     fit: 'すべてのピンを見る', loading: '地図を読み込んでいます…',
     noKey: 'エリア地図は準備中です', noKeyHint: '各スポットの地図リンクはそのまま使えます。',
@@ -15,7 +15,7 @@ const copy = {
     select: '気になる番号を選んでみよう', areaPoint: 'エリアの代表位置', source: '位置の出典',
   },
   ko: {
-    title: '지도에서 다음 목적지를 찾아요.', hint: '번호를 선택하면 목록과 지도가 함께 움직여요.',
+    title: '지도에서 다음 목적지를 찾아요.', hint: '번호를 선택하면 목록과 지도가 함께 움직여요. 같은 건물의 핀은 누를 때마다 가게가 바뀝니다.',
     pinned: '개 장소 표시', pending: '위치 · 지점 확인 중', pendingHint: '위치가 등록되지 않은 장소는 지도에 표시하지 않아요.',
     fit: '모든 핀 보기', loading: '지도를 불러오는 중…',
     noKey: '동네 지도를 준비 중이에요', noKeyHint: '각 장소의 지도 링크는 이용할 수 있어요.',
@@ -24,7 +24,7 @@ const copy = {
     select: '관심 있는 번호를 선택해 보세요', areaPoint: '지역의 대표 위치', source: '위치 출처',
   },
   en: {
-    title: 'Find your next little detour.', hint: 'Choose a number to connect the list and the map.',
+    title: 'Find your next little detour.', hint: 'Choose a number to connect the list and map. Tap a shared pin again to see another shop in the building.',
     pinned: 'places pinned', pending: 'Location or branch to confirm', pendingHint: 'Places without a saved location are not pinned.',
     fit: 'Show all pins', loading: 'Loading the map…',
     noKey: 'The neighborhood map is getting ready', noKeyHint: 'Individual map links are still available.',
@@ -44,9 +44,21 @@ export default function AreaMap({ entries, locale, onOpen, mapUrl }: Props) {
   // Stable inputs avoid re-creating map instances when the enclosing component re-renders.
   const entrySignature = JSON.stringify(entries);
   const located = useMemo(() => entries.filter(entry => entry.location), [entrySignature]);
+  const groups = useMemo(() => {
+    const byPosition = new Map<string, { entries: Entry[]; number: number }>();
+    located.forEach((entry, index) => {
+      const position = `${entry.location!.lat},${entry.location!.lng}`;
+      const group = byPosition.get(position);
+      if (group) group.entries.push(entry);
+      else byPosition.set(position, { entries: [entry], number: index + 1 });
+    });
+    return byPosition;
+  }, [located]);
   const unlocated = entries.filter(entry => !entry.location);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const activeIdRef = useRef<string | null>(null);
   const active = located.find(entry => entry.id === activeId);
+  useEffect(() => { activeIdRef.current = activeId; }, [activeId]);
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>(key ? 'loading' : 'error');
   const [attempt, setAttempt] = useState(0);
   const canvas = useRef<HTMLDivElement>(null);
@@ -58,6 +70,7 @@ export default function AreaMap({ entries, locale, onOpen, mapUrl }: Props) {
   const panel = useRef<HTMLDivElement>(null);
 
   function selectFromList(id: string) {
+    activeIdRef.current = id;
     setActiveId(id);
     if (window.matchMedia('(max-width: 700px)').matches) {
       panel.current?.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
@@ -118,23 +131,28 @@ export default function AreaMap({ entries, locale, onOpen, mapUrl }: Props) {
     if (status !== 'ready' || !map || !maps) return;
     pins.current.forEach(pin => pin.setMap(null));
     pins.current.clear();
-    located.forEach((entry, index) => {
-      pins.current.set(entry.id, createNumberPin(maps, map, entry.location!, index + 1, text(entry.title, locale), () => {
-        setActiveId(entry.id);
-        const row = rows.current.get(entry.id);
+    groups.forEach((group, position) => {
+      const entry = group.entries[0];
+      pins.current.set(position, createNumberPin(maps, map, entry.location!, group.number, group.entries.map(item => text(item.title, locale)).join(' / '), () => {
+        const currentIndex = group.entries.findIndex(item => item.id === activeIdRef.current);
+        const next = group.entries[(currentIndex + 1) % group.entries.length];
+        activeIdRef.current = next.id;
+        setActiveId(next.id);
+        const row = rows.current.get(next.id);
         const container = list.current;
         if (row && container) container.scrollTo({
           top: row.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop - 10,
           behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
         });
-      }));
+      }, group.entries.length));
     });
     fitAll();
     return () => { pins.current.forEach(pin => pin.setMap(null)); pins.current.clear(); };
-  }, [status, located, locale]);
+  }, [status, located, groups, locale]);
 
   useEffect(() => {
-    pins.current.forEach((pin, id) => pin.setSelected(id === active?.id));
+    const activePosition = active?.location ? `${active.location.lat},${active.location.lng}` : null;
+    pins.current.forEach((pin, position) => pin.setSelected(position === activePosition));
     if (active?.location && mapRef.current) mapRef.current.panTo(active.location);
   }, [active, status, located, locale]);
 
