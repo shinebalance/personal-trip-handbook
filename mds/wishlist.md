@@ -215,4 +215,52 @@ entries:
     related:
       - hottracks
       - gimbab-records
+  - id: lotte-mart
+    type: wish
+    title:
+      ja: ロッテマート
+      ko: 롯데마트
+      en: Lotte Mart
+    koreanName: 롯데마트
+    description:
+      ja: '現地のスーパーをのぞく。基本候補はソウル駅店、ロッテワールドタワーへ行く場合は蚕室店。場所は関連する店舗カードのピンで確認。'
+      ko: '현지 마트 둘러보기. 기본 후보는 서울역점, 롯데월드타워에 가면 잠실점. 위치는 관련 매장 카드의 핀에서 확인.'
+      en: 'Explore a local supermarket. Seoul Station is the default; choose Jamsil on a Lotte World Tower day. See the linked branch cards for pins.'
+    area: anywhere
+    category: shopping
+    priority: if-found
+    related:
+      - lotte-mart-seoul-station
+      - lotte-mart-jamsil
+  - id: olive-young
+    type: wish
+    title:
+      ja: オリーブヤング
+      ko: 올리브영
+      en: Olive Young
+    koreanName: 올리브영
+    description:
+      ja: 'お土産を探したい。弘大の買い物に合わせて弘大タウンを選択。場所は関連する店舗カードのピンで確認。'
+      ko: '선물을 찾아보기. 홍대 쇼핑과 함께 홍대타운을 선택. 위치는 관련 매장 카드의 핀에서 확인.'
+      en: 'Look for gifts at the selected Hongdae Town branch. See the linked branch card for its pin.'
+    area: anywhere
+    category: shopping
+    priority: if-found
+    related:
+      - olive-young-hongdae
+  - id: mega-coffee
+    type: wish
+    title:
+      ja: MEGA Coffee
+      ko: 메가MGC커피
+      en: MEGA Coffee
+    koreanName: 메가MGC커피
+    description:
+      ja: '散歩の途中にコーヒー休憩。弘大入口駅店を選択。場所は関連する店舗カードのピンで確認。'
+      ko: '산책 중 커피 한 잔. 홍대입구역점을 선택. 위치는 관련 매장 카드의 핀에서 확인.'
+      en: 'A coffee break at the selected Hongik Univ. Station branch. See the linked branch card for its pin.'
+    area: anywhere
+    category: cafe
+    related:
+      - mega-coffee-hongdae
 ---
