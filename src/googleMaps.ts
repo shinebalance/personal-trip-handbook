@@ -45,7 +45,7 @@ export function loadGoogleMaps(key: string): Promise<typeof google.maps> {
   return pending;
 }
 
-export function createNumberPin(maps: typeof google.maps, map: google.maps.Map, position: google.maps.LatLngLiteral, number: number, label: string, onSelect: () => void) {
+export function createNumberPin(maps: typeof google.maps, map: google.maps.Map, position: google.maps.LatLngLiteral, number: number, label: string, onSelect: () => void, count = 1) {
   class NumberPin extends maps.OverlayView {
     button = document.createElement('button');
     constructor() {
@@ -53,6 +53,7 @@ export function createNumberPin(maps: typeof google.maps, map: google.maps.Map, 
       this.button.type = 'button';
       this.button.className = 'number-pin';
       this.button.textContent = String(number).padStart(2, '0');
+      if (count > 1) this.button.setAttribute('data-count', String(count));
       this.button.title = label;
       this.button.setAttribute('aria-label', `${number}. ${label}`);
       this.button.setAttribute('aria-pressed', 'false');

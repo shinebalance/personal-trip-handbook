@@ -14,13 +14,13 @@ const ja = {
   close: '閉じる', reason: '旅のメモ', address: '住所', copyAddress: '住所をコピー', copied: 'コピーしました', copyFailed: 'コピーできませんでした。文字を選択してコピーしてください。',
   share: 'このページを共有', copyLink: 'リンクをコピー', website: '公式サイト', source: '参考ページ', webSearch: 'ウェブで調べる',
   locationPending: '場所・支店は確認前です。地図の検索結果をご確認ください。', foodLocation: '食べたいもの・買いたいもののメモです。お店はこれから選びます。',
-  related: 'あわせて見たい', mapPreview: '地図プレビュー', mapUnavailable: '地図プレビューは準備中です', mapFallback: 'Google Mapsで場所を確認できます。', verified: '住所の確認日',
+  related: 'あわせて見たい', mapPreview: '地図プレビュー', mapUnavailable: '地図プレビューは準備中です', mapFallback: '外部の地図で場所を確認できます。', verified: '住所の確認日',
   noDays: '予定は、これから。', noDaysHint: '気になる場所を眺めながら、自分のペースで旅を組み立てよう。', browse: '行き先を見てみる', timeTbd: '時間未定',
   noteTitle: '旅のアイデアを、そのまま。', noteSubtitle: 'まだ決まっていないことも、ここに。', originalNote: '原文のメモ', originalHint: '自由なメモは書かれた言語のまま表示しています。',
   language: '表示言語', results: '件の候補', credits: '写真クレジット', itineraryTitle: '旅の予定', itinerarySubtitle: '行きたい場所を、ひとつずつ。',
   notFound: 'このページは見つかりませんでした', back: '行き先に戻る', noteEmpty: 'メモはまだありません', loadingMap: '読み込みに時間がかかる場合は、地図を別画面で開けます。',
   categories: { books: '本・ZINE', anime: 'アニメ', music: '音楽', design: '文具・雑貨', electronics: '電気街', shopping: '買い物', walk: '街歩き', cafe: 'カフェ', meal: 'ごはん', sweet: 'おやつ', other: 'その他' },
-  areas: { hongdae: '弘大', hapjeong: '合井', sinchon: '新村', yeonhui: '延禧洞', yongsan: '龍山', gwanghwamun: '光化門', seongsu: '聖水', jamsil: '蚕室', jongno: '鐘路', myeongdong: '明洞', 'seoul-station': 'ソウル駅', seocho: '瑞草', gangnam: '江南', magok: '麻谷', anywhere: '街のどこかで', unconfirmed: 'エリア確認中' },
+  areas: { hongdae: '弘大', hapjeong: '合井', sangsu: '上水', sinchon: '新村', yeonhui: '延禧洞', yongsan: '龍山', gwanghwamun: '光化門', 'city-hall': '市庁', gongdeok: '孔徳', mapo: '麻浦', aegogae: 'エオゲ', gyeongbokgung: '景福宮', seongsu: '聖水', jamsil: '蚕室', jongno: '鐘路', myeongdong: '明洞', 'seoul-station': 'ソウル駅', seocho: '瑞草', gangnam: '江南', magok: '麻谷', anywhere: '街のどこかで', unconfirmed: 'エリア確認中' },
 };
 type Dictionary = Omit<typeof ja, 'categories' | 'areas'> & { categories: Record<string, string>; areas: Record<string, string> };
 const ko: Dictionary = {
@@ -36,13 +36,13 @@ const ko: Dictionary = {
   close: '닫기', reason: '여행 메모', address: '주소', copyAddress: '주소 복사', copied: '복사했어요', copyFailed: '복사하지 못했어요. 텍스트를 선택해서 복사해 주세요.',
   share: '이 페이지 공유', copyLink: '링크 복사', website: '공식 사이트', source: '참고 페이지', webSearch: '웹에서 검색',
   locationPending: '위치나 지점은 아직 확인 전입니다. 지도 검색 결과를 확인해 주세요.', foodLocation: '먹고 싶은 것 · 사고 싶은 것의 메모입니다. 가게는 앞으로 정할 예정이에요.',
-  related: '함께 보고 싶은 곳', mapPreview: '지도 미리보기', mapUnavailable: '지도 미리보기 준비 중', mapFallback: 'Google Maps에서 위치를 확인할 수 있어요.', verified: '주소 확인일',
+  related: '함께 보고 싶은 곳', mapPreview: '지도 미리보기', mapUnavailable: '지도 미리보기 준비 중', mapFallback: '외부 지도에서 위치를 확인할 수 있어요.', verified: '주소 확인일',
   noDays: '일정은 이제부터.', noDaysHint: '가고 싶은 곳을 둘러보며 나만의 속도로 여행을 계획해 보세요.', browse: '가고 싶은 곳 둘러보기', timeTbd: '시간 미정',
   noteTitle: '여행 아이디어를 그대로.', noteSubtitle: '아직 정하지 않은 것들도 여기에.', originalNote: '원문 메모', originalHint: '자유 메모는 작성된 언어 그대로 표시됩니다.',
   language: '표시 언어', results: '개의 후보', credits: '사진 출처', itineraryTitle: '여행 일정', itinerarySubtitle: '가고 싶은 곳을 하나씩.',
   notFound: '페이지를 찾을 수 없어요', back: '가고 싶은 곳으로', noteEmpty: '아직 메모가 없어요', loadingMap: '로딩이 오래 걸리면 지도를 새 창에서 열 수 있어요.',
   categories: { books: '책 · 진', anime: '애니메이션', music: '음악', design: '문구 · 소품', electronics: '전자상가', shopping: '쇼핑', walk: '산책', cafe: '카페', meal: '식사', sweet: '간식', other: '기타' },
-  areas: { hongdae: '홍대', hapjeong: '합정', sinchon: '신촌', yeonhui: '연희동', yongsan: '용산', gwanghwamun: '광화문', seongsu: '성수', jamsil: '잠실', jongno: '종로', myeongdong: '명동', 'seoul-station': '서울역', seocho: '서초', gangnam: '강남', magok: '마곡', anywhere: '걷다가 만나는 곳', unconfirmed: '동네 확인 중' },
+  areas: { hongdae: '홍대', hapjeong: '합정', sangsu: '상수', sinchon: '신촌', yeonhui: '연희동', yongsan: '용산', gwanghwamun: '광화문', 'city-hall': '시청', gongdeok: '공덕', mapo: '마포', aegogae: '애오개', gyeongbokgung: '경복궁', seongsu: '성수', jamsil: '잠실', jongno: '종로', myeongdong: '명동', 'seoul-station': '서울역', seocho: '서초', gangnam: '강남', magok: '마곡', anywhere: '걷다가 만나는 곳', unconfirmed: '동네 확인 중' },
 };
 const en: Dictionary = {
   displayMode: 'Display mode', cardView: 'Cards', areaMapView: 'Neighborhood map',
@@ -57,12 +57,12 @@ const en: Dictionary = {
   close: 'Close', reason: 'My travel note', address: 'Address', copyAddress: 'Copy address', copied: 'Copied', copyFailed: 'Could not copy. Select the text and copy it manually.',
   share: 'Share this page', copyLink: 'Copy link', website: 'Official website', source: 'Reference', webSearch: 'Search the web',
   locationPending: 'Location or branch not yet confirmed. Please check the map results.', foodLocation: 'Something I’d like to eat or buy. A place to find it is still to be decided.',
-  related: 'Also on my list', mapPreview: 'Map preview', mapUnavailable: 'Map preview coming soon', mapFallback: 'You can find the location on Google Maps.', verified: 'Address checked',
+  related: 'Also on my list', mapPreview: 'Map preview', mapUnavailable: 'Map preview coming soon', mapFallback: 'You can find the location on an external map.', verified: 'Address checked',
   noDays: 'Room for a little spontaneity.', noDaysHint: 'Explore the places on your list and put together a trip at your own pace.', browse: 'Explore places', timeTbd: 'Time to decide',
   noteTitle: 'Every trip starts with a thought.', noteSubtitle: 'A place for the ideas still taking shape.', originalNote: 'Original notes', originalHint: 'Free-form notes are shown in the language they were written in.',
   language: 'Display language', results: 'ideas', credits: 'Photo credit', itineraryTitle: 'My itinerary', itinerarySubtitle: 'One good place at a time.',
   notFound: 'This page could not be found', back: 'Back to places', noteEmpty: 'No notes yet', loadingMap: 'If loading takes a while, you can open the map in another tab.',
   categories: { books: 'Books & zines', anime: 'Anime', music: 'Music', design: 'Stationery', electronics: 'Electronics', shopping: 'Shopping', walk: 'Walks', cafe: 'Cafés', meal: 'Meals', sweet: 'Sweet things', other: 'Other' },
-  areas: { hongdae: 'Hongdae', hapjeong: 'Hapjeong', sinchon: 'Sinchon', yeonhui: 'Yeonhui-dong', yongsan: 'Yongsan', gwanghwamun: 'Gwanghwamun', seongsu: 'Seongsu', jamsil: 'Jamsil', jongno: 'Jongno', myeongdong: 'Myeongdong', 'seoul-station': 'Seoul Station', seocho: 'Seocho', gangnam: 'Gangnam', magok: 'Magok', anywhere: 'Along the way', unconfirmed: 'Area to confirm' },
+  areas: { hongdae: 'Hongdae', hapjeong: 'Hapjeong', sangsu: 'Sangsu', sinchon: 'Sinchon', yeonhui: 'Yeonhui-dong', yongsan: 'Yongsan', gwanghwamun: 'Gwanghwamun', 'city-hall': 'City Hall', gongdeok: 'Gongdeok', mapo: 'Mapo', aegogae: 'Aeogae', gyeongbokgung: 'Gyeongbokgung', seongsu: 'Seongsu', jamsil: 'Jamsil', jongno: 'Jongno', myeongdong: 'Myeongdong', 'seoul-station': 'Seoul Station', seocho: 'Seocho', gangnam: 'Gangnam', magok: 'Magok', anywhere: 'Along the way', unconfirmed: 'Area to confirm' },
 };
 export const dictionaries: Record<Locale, Dictionary> = { ja, ko, en };

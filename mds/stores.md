@@ -170,6 +170,7 @@ entries:
     category: meal
     address: '서울 중구 명동10길 19-10 2층'
     query: '틈새라면 명동본점 서울 중구 명동10길 19-10'
+    mapsUrl: 'https://map.naver.com/p/search/%ED%8B%88%EC%83%88%EB%9D%BC%EB%A9%B4%20%EB%AA%85%EB%8F%99%EB%B3%B8%EC%A0%90'
     sourceUrl: 'https://www.tabling.co.kr/place/677cc7bc66de5f06987549be'
     verifiedAt: '2026-09-22'
     related:
