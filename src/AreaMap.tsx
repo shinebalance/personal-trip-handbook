@@ -3,6 +3,7 @@ import { ArrowUpRight, Expand, LoaderCircle, MapPin, Navigation, RotateCcw } fro
 import { createNumberPin, loadGoogleMaps } from './googleMaps';
 import { dictionaries, text } from './i18n';
 import type { Entry, Locale } from './types';
+import RatingSelect from './RatingSelect';
 
 const copy = {
   ja: {
@@ -34,11 +35,11 @@ const copy = {
   },
 };
 
-type Props = { entries: Entry[]; locale: Locale; onOpen: (entry: Entry) => void; mapUrl: (entry: Entry) => string };
+type Props = { entries: Entry[]; locale: Locale; onOpen: (entry: Entry) => void; mapUrl: (entry: Entry) => string; ratingFor: (entry: Entry) => number; onRatingChange: (id: string, value: number) => void };
 type Pin = ReturnType<typeof createNumberPin>;
 const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY?.trim() || import.meta.env.VITE_GOOGLE_MAPS_EMBED_API_KEY?.trim();
 
-export default function AreaMap({ entries, locale, onOpen, mapUrl }: Props) {
+export default function AreaMap({ entries, locale, onOpen, mapUrl, ratingFor, onRatingChange }: Props) {
   const c = copy[locale];
   const t = dictionaries[locale];
   // Stable inputs avoid re-creating map instances when the enclosing component re-renders.
@@ -164,7 +165,7 @@ export default function AreaMap({ entries, locale, onOpen, mapUrl }: Props) {
           <button className="map-result-select" ref={element => { if (element) rows.current.set(entry.id, element); else rows.current.delete(entry.id); }} onClick={() => selectFromList(entry.id)} aria-pressed={active?.id === entry.id}>
             <span className="map-row-number">{String(index + 1).padStart(2, '0')}</span><span className="map-result-text"><small>{t.areas[entry.area] || entry.area} · {t.categories[entry.category] || entry.category}</small><strong>{text(entry.title, locale)}</strong><span lang={locale === 'ko' ? 'en' : 'ko'}>{locale === 'ko' ? text(entry.title, 'en') : entry.koreanName}</span></span><Navigation size={16} />
           </button>
-          <div className="map-result-actions"><button onClick={() => onOpen(entry)}>{t.details}<ArrowUpRight size={14} /></button><a href={mapUrl(entry)} target="_blank" rel="noreferrer">{t.map}<ArrowUpRight size={14} /></a></div>
+          <div className="map-result-actions"><RatingSelect entry={entry} locale={locale} value={ratingFor(entry)} onChange={onRatingChange} /><button onClick={() => onOpen(entry)}>{t.details}<ArrowUpRight size={14} /></button><a href={mapUrl(entry)} target="_blank" rel="noreferrer">{t.map}<ArrowUpRight size={14} /></a></div>
         </article>)}
         {unlocated.length > 0 && <div className="unlocated-spots"><h4>{c.pending} · {unlocated.length}</h4><p>{c.pendingHint}</p>{unlocated.map(entry => <button key={entry.id} onClick={() => onOpen(entry)}>{text(entry.title, locale)}<ArrowUpRight size={14} /></button>)}</div>}
       </div>

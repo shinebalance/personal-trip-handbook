@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadContent } from './content.mjs';
 
 function withNotes(files, callback) {
@@ -42,6 +43,28 @@ test('map locations retain their coordinates, source and precision; unknown loca
   });
   for (const invalid of [{ ...location, lat: 91 }, { ...location, lng: -181 }, { ...location, lat: '37.5' }, { ...location, lng: undefined }, { ...location, sourceUrl: undefined }, { ...location, sourceUrl: 'javascript:alert(1)' }, { ...location, kind: 'guessed' }]) {
     withNotes({ 'invalid-map.md': frontmatter({ ...spot, location: invalid }) }, directory => assert.throws(() => loadContent(directory), /invalid-map.md/));
+  }
+});
+test('personal rating seeds from the restaurant memo are valid and map ready', () => {
+  const entries = loadContent(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../mds')).entries;
+  const expected = {
+    'nongmin-baekam-sundae-city-hall': 5,
+    'hwanggeum-kongbat': 5,
+    'ongdal-saem': 4,
+    'myeongdong-gyoja': 4,
+    'guldari-sikdang': 4,
+    'mapo-ok': 4,
+    'hongdae-budae-jjigae': 4,
+    'sulbing-hongdae': 4,
+    'mealtop-yongsan': 4,
+  };
+  for (const [id, rating] of Object.entries(expected)) {
+    const entry = entries.find(item => item.id === id);
+    assert.equal(entry?.initialRating, rating, id);
+    assert.ok(entry.location, `${id} needs a map location`);
+  }
+  for (const rating of [0, 6, 1.5, '5']) {
+    withNotes({ 'bad-rating.md': frontmatter({ ...spot, initialRating: rating }) }, directory => assert.throws(() => loadContent(directory), /bad-rating.md/));
   }
 });
 test('bad content cannot replace the live site: duplicate IDs, unknown references, accommodation, invalid URLs and dates fail with context', () => {

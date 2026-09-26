@@ -12,6 +12,7 @@ const entrySchema = z.object({
   description: z.union([z.string(), localized]).default(''),
   area: z.string().default('anywhere'), category: z.string().default('other'),
   priority: z.enum(['candidate', 'if-time', 'if-found']).default('candidate'),
+  initialRating: z.number().int().min(1).max(5).optional(),
   koreanName: z.string().optional(), address: z.string().optional(), query: z.string().optional(),
   mapsUrl: url.optional(), website: url.optional(), sourceUrl: url.optional(),
   verifiedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional(),

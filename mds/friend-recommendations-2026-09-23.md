@@ -24,6 +24,7 @@ entries:
       sourceUrl: 'https://www.openstreetmap.org/way/421038775'
       checkedAt: '2026-09-23'
   - id: sulbing-hongdae
+    initialRating: 4
     area: hongdae
     category: sweet
     address: 서울 마포구 홍익로6길 15
@@ -67,6 +68,7 @@ entries:
       sourceUrl: 'https://www.openstreetmap.org/node/7140738587'
       checkedAt: '2026-09-23'
   - id: ongdal-saem
+    initialRating: 4
     area: sangsu
     category: meal
     address: 서울 마포구 양화로6길 99
@@ -109,6 +111,7 @@ entries:
       sourceUrl: 'https://www.openstreetmap.org/way/1029537270'
       checkedAt: '2026-09-23'
   - id: myeongdong-gyoja
+    initialRating: 4
     area: myeongdong
     category: meal
     address: 서울 중구 명동10길 29
@@ -153,6 +156,7 @@ entries:
       sourceUrl: 'https://www.openstreetmap.org/node/13851761189'
       checkedAt: '2026-09-23'
   - id: nongmin-baekam-sundae-city-hall
+    initialRating: 5
     area: city-hall
     category: meal
     address: 서울 중구 남대문로1길 33
@@ -221,6 +225,7 @@ entries:
     related:
       - lotte-mart-seoul-station
   - id: guldari-sikdang
+    initialRating: 4
     area: gongdeok
     category: meal
     address: 서울 마포구 새창로 8-1
@@ -242,6 +247,7 @@ entries:
       sourceUrl: 'https://korean.visitseoul.net/attractions/Guldari/KOPvroqkg'
       checkedAt: '2026-09-23'
   - id: mapo-ok
+    initialRating: 4
     area: mapo
     category: meal
     address: 서울 마포구 토정로 312
@@ -265,6 +271,7 @@ entries:
     related:
       - seolleongtang
   - id: hongdae-budae-jjigae
+    initialRating: 4
     area: hongdae
     category: meal
     address: 서울 마포구 홍익로5안길 34 1층
@@ -286,6 +293,7 @@ entries:
       sourceUrl: 'https://www.openstreetmap.org/node/13946953027'
       checkedAt: '2026-09-23'
   - id: hwanggeum-kongbat
+    initialRating: 5
     area: aegogae
     category: meal
     address: 서울 마포구 마포대로16길 9
@@ -328,6 +336,7 @@ entries:
       sourceUrl: 'https://www.openstreetmap.org/way/141957176'
       checkedAt: '2026-09-23'
   - id: mealtop-yongsan
+    initialRating: 4
     area: yongsan
     category: sweet
     address: 서울 용산구 한강대로14길 6 1·2층 101호

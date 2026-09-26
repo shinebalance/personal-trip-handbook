@@ -24,10 +24,11 @@ npm run preview
 - 50件の行き先、18件の食・買い物候補。友人のソウル旅行候補ガイドに載る店舗20件を追加し、既存のトゥムセラーメンは重複登録せず地図リンクを補っています。
 - 3言語のUI、名前・訪問理由。韓国語名や住所を併記。
 - エリア・カテゴリ・希望条件・チェック済みで絞り込み。3言語を横断して検索。
+- 各カード・地図一覧・詳細から★1〜5で自分の優先度を変更。★4以上／★5のみの絞り込みをカードと地図に反映します。「行く」の2店は★5、「たぶん行く」の店とピンス店2件は★4で初期設定しています。
 - スポット詳細、Google Mapsリンク、住所コピー、共有用URL。
 - APIキー設定後は詳細パネルでGoogle Mapsをプレビュー。
 - 「エリア地図で見る」で、絞り込んだスポットを番号付きピンで表示。一覧・ピンの選択が連動し、詳細パネルも開けます。PCは左右、スマホは地図→一覧の配置です。
-- チェックと言語設定を端末内に保存。端末間・他の人とは同期しません。
+- チェック・★評価・言語設定を端末内に保存。端末間・他の人とは同期しません。
 - 自由なMarkdownの掲載、構造化したMarkdownからカード・旅程を生成。
 - ホテルの情報を掲載する機能はありません。
 
@@ -63,6 +64,7 @@ koreanName: 관심 있는 서점
 | --- | --- |
 | type | `spot`（場所）、`wish`（食・買い物）、`day`（旅程）、`note`（自由メモ）、`collection`（複数のspot/wish） |
 | priority | `candidate`（候補、既定）、`if-time`（行けたら）、`if-found`（見かけたら） |
+| initialRating | 初期の★評価（1〜5、省略時は未設定）。画面での変更は端末ごとに保存されます |
 | area | `hongdae`, `hapjeong`, `sangsu`, `sinchon`, `yeonhui`, `yongsan`, `gwanghwamun`, `city-hall`, `gongdeok`, `mapo`, `aegogae`, `gyeongbokgung`, `seongsu`, `jamsil`, `jongno`, `myeongdong`, `seoul-station`, `seocho`, `gangnam`, `magok`, `anywhere`, `unconfirmed` |
 | category | `books`, `anime`, `music`, `design`, `electronics`, `shopping`, `walk`, `cafe`, `meal`, `sweet`, `other` |
 

@@ -46,3 +46,19 @@
 .spin{animation:spin 1.3s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:1000px){.area-map-layout{grid-template-columns:minmax(225px,.9fr) minmax(0,1.25fr);gap:19px}.map-selected{flex-wrap:wrap}.map-stage{height:430px}}
 @media(max-width:700px){.view-switch{margin-left:0;width:100%}.view-switch button{flex:1;justify-content:center;font-size:13px;padding-inline:10px}.area-map-heading{align-items:flex-start;gap:12px}.area-map-heading h3{font-size:20px}.area-map-heading p{font-size:13px}.pin-count{font-size:12px;padding-top:5px}.area-map-layout{display:flex;flex-direction:column;gap:20px}.area-map-panel{order:-1;position:static;width:100%;padding:8px;border-radius:18px}.map-stage{height:380px;border-radius:12px}.area-map-toolbar{padding:4px 5px 11px;font-size:12px}.map-selected{padding:16px 8px 8px;min-height:95px;gap:10px}.map-selected h4{font-size:18px}.map-selected .eyebrow{font-size:10px;letter-spacing:.04em}.map-results{width:100%;max-height:450px;padding:6px 7px 12px}.map-result-select{padding:17px}.map-data-credit{font-size:10px}.map-selected>p{font-size:13px}.map-state{padding:20px}.map-state strong{font-size:16px}}
+
+/* Personal ratings can be changed from cards, map results, and details. */
+.filter-bottom{flex-wrap:wrap;justify-content:flex-start;gap:12px 18px}
+.filter-bottom .category-list{flex:1 1 100%}
+.rating-filter{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.rating-filter button{min-height:39px;padding:7px 13px;border-radius:10px;box-shadow:var(--small);font-size:13px;white-space:nowrap;color:#607457}
+.rating-filter button[aria-pressed=true]{background:#d6e8c8;box-shadow:var(--in);color:#39592e;font-weight:700}
+.rating-select{display:inline-flex;align-items:center;gap:7px;max-width:100%;padding:6px 10px;border-radius:10px;box-shadow:var(--in);color:#748268;background:#edf3e8}
+.rating-select.has-rating{color:#8b651f;background:#f7f0d9}
+.rating-select select{min-width:0;max-width:100%;appearance:none;border:0;background:transparent;cursor:pointer;font-size:13px;font-weight:600;color:inherit;padding-right:2px}
+.card-rating{display:flex;margin:0 0 12px}
+.detail-rating{display:flex;align-items:center;gap:12px;margin-top:17px;color:#64765a;font-size:13px}
+.map-result-actions{flex-wrap:wrap;align-items:center;gap:8px 14px}
+.map-result-actions .rating-select{margin-right:auto}
+.map-result-actions .rating-select select{font-size:12px}
+@media(max-width:600px){.rating-filter{width:100%}.rating-filter button{flex:1}.detail-rating{flex-wrap:wrap}.map-result-actions .rating-select{width:100%}}

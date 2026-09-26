@@ -3,6 +3,7 @@ export type Localized = string | { ja: string; ko?: string; en?: string };
 export type Entry = {
   id: string; type: 'spot' | 'wish'; title: Localized; description: Localized;
   area: string; category: string; priority: 'candidate' | 'if-time' | 'if-found';
+  initialRating?: number;
   koreanName?: string; address?: string; query?: string; mapsUrl?: string;
   website?: string; sourceUrl?: string; verifiedAt?: string; related: string[]; source: string;
   location?: { lat: number; lng: number; sourceUrl: string; checkedAt: string; kind: 'place' | 'area' };
