@@ -48,3 +48,63 @@
 .spin{animation:spin 1.3s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:1000px){.area-map-layout{grid-template-columns:minmax(225px,.9fr) minmax(0,1.25fr);gap:19px}.map-selected{flex-wrap:wrap}.map-stage{height:430px}}
 @media(max-width:700px){.view-switch{margin-left:0;width:100%}.view-switch button{flex:1;justify-content:center;font-size:13px;padding-inline:10px}.area-map-heading{align-items:flex-start;gap:12px}.area-map-heading h3{font-size:20px}.area-map-heading p{font-size:13px}.pin-count{font-size:12px;padding-top:5px}.area-map-layout{display:flex;flex-direction:column;gap:20px}.area-map-panel{order:-1;position:static;width:100%;padding:8px;border-radius:18px}.map-stage{height:380px;border-radius:12px}.area-map-toolbar{padding:4px 5px 11px;font-size:12px}.map-selected{padding:16px 8px 8px;min-height:95px;gap:10px}.map-selected h4{font-size:18px}.map-selected .eyebrow{font-size:10px;letter-spacing:.04em}.map-results{width:100%;max-height:450px;padding:6px 7px 12px}.map-result-select{padding:17px}.map-data-credit{font-size:10px}.map-selected>p{font-size:13px}.map-state{padding:20px}.map-state strong{font-size:16px}}
+
+/* Picross break: a small nonogram page reached from the footer. */
+.footer-game{display:inline-flex;align-items:center;gap:6px;margin-left:auto;white-space:nowrap;padding:5px 11px;border-radius:999px;box-shadow:var(--small);color:var(--accent);font-size:12px;text-decoration:none}
+.footer-game:hover{background:#e1ebd8}
+.picross-layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;align-items:start}
+.picross-main{min-width:0;scroll-margin-top:96px}
+.picross-toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.view-switch.picross-mode{margin:0}
+.picross-actions{display:flex;gap:10px}
+.picross-actions .raised-button{margin-top:0}
+.raised-button:disabled{opacity:.5;box-shadow:none}
+.raised-button:disabled:hover{background:var(--bg)}
+.picross-frame{width:fit-content;max-width:100%;margin-inline:auto;overflow-x:auto;padding:16px;border-radius:22px;background:#eef4e9;border:1px solid #f6f9f1;box-shadow:var(--out)}
+.picross-board{--cell:clamp(16px,calc((min(100vw - 60px,640px) - 54px - var(--clue-cols) * 15px) / var(--cols)),44px);--grid:#c5d3bc;--grid-strong:#6f8c5c;display:grid;grid-template-columns:auto auto;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;font-variant-numeric:tabular-nums}
+.picross-corner{display:flex;align-items:flex-end;justify-content:flex-end;padding:0 9px 8px 0;font:500 12px var(--serif);color:var(--subtle)}
+.col-clues{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));padding-left:2px}
+.row-clues{display:grid;grid-template-rows:repeat(var(--rows),var(--cell));padding-top:2px}
+.col-clue,.row-clue{display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--ink);line-height:1.25;border-radius:8px}
+.col-clue{flex-direction:column;justify-content:flex-end;gap:1px;padding:5px 0 7px;border-radius:8px 8px 0 0}
+.row-clue{justify-content:flex-end;gap:6px;padding:0 9px 0 7px;border-radius:8px 0 0 8px}
+.col-clue.current,.row-clue.current{background:var(--green)}
+.col-clue.done,.row-clue.done{color:#97a690;font-weight:500}
+.cells{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));grid-template-rows:repeat(var(--rows),var(--cell));border-top:2px solid var(--grid-strong);border-left:2px solid var(--grid-strong);background:#f7faf3}
+.cell{position:relative;width:var(--cell);height:var(--cell);padding:0;border-radius:0;background:#f7faf3;border-right:1px solid var(--grid);border-bottom:1px solid var(--grid);touch-action:none;transition:background .12s}
+.cell.edge-right{border-right:2px solid var(--grid-strong)}
+.cell.edge-bottom{border-bottom:2px solid var(--grid-strong)}
+.cell.in-line{background:#e9f1e1}
+.cell.filled{background:var(--accent-deep);box-shadow:inset 1px 1px 0 #ffffff2e}
+.cell.crossed::before,.cell.crossed::after{content:'';position:absolute;left:24%;right:24%;top:calc(50% - 1px);height:2px;border-radius:2px;background:#6c7b65;transform:rotate(45deg)}
+.cell.crossed::after{transform:rotate(-45deg)}
+.cell:focus-visible{outline:3px solid #38592b;outline-offset:-3px;z-index:1}
+@media(hover:hover){.picross-board:not(.is-solved) .cell:not(.filled):hover{background:#d8e7cc}}
+.is-solved .cells{border-color:transparent}
+.is-solved .cell{cursor:default;border-color:transparent;background:#f7faf3}
+.is-solved .cell.filled{background:var(--accent-deep);border-color:var(--accent-deep);box-shadow:none;animation:picross-reveal .5s ease both}
+.is-solved .cell.crossed::before,.is-solved .cell.crossed::after{display:none}
+@keyframes picross-reveal{from{transform:scale(.55);border-radius:40%}to{transform:none}}
+.picross-status{margin-top:22px;min-height:64px;text-align:center}
+.picross-status>p{max-width:540px;margin:0 auto;font-size:14px;color:var(--muted);text-wrap:balance}
+.picross-keys{display:block;margin-top:4px;font-size:13px;color:var(--subtle)}
+@media(hover:none){.picross-keys{display:none}}
+.picross-cleared{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;color:var(--accent)}
+.picross-cleared p{display:flex;align-items:baseline;gap:10px;margin:0;font-size:16px;color:var(--ink)}
+.picross-cleared strong{font:500 23px var(--serif);color:var(--accent)}
+.picross-cleared .raised-button{margin-top:0}
+.picross-list{padding:20px 14px;border-radius:22px;background:#eaf1e4;border:1px solid #f6f9f1;box-shadow:var(--out)}
+.picross-list h2{margin:0 0 12px 6px;font:500 19px var(--serif)}
+.picross-all{display:flex;align-items:center;gap:7px;margin:0 0 12px 6px;font-size:13px;color:var(--accent)}
+.picross-list ul{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.picross-list li button{display:flex;align-items:center;gap:12px;width:100%;min-height:58px;padding:9px 12px;border-radius:14px;text-align:left}
+.picross-list li button:hover{background:#e1ebd8}
+.picross-list li button.active{background:#f2f6ed;box-shadow:var(--small)}
+.picross-thumb{display:grid;flex:none;place-items:center;width:40px;height:40px;border-radius:10px;background:#dfe9d6;box-shadow:var(--in);font:500 18px var(--serif);color:var(--subtle)}
+.picross-thumb.done{padding:6px;background:#f7faf3}
+.picross-thumb svg{width:100%;height:100%;fill:var(--accent-deep)}
+.picross-list small{display:block;font-size:12px;letter-spacing:.04em;color:var(--subtle)}
+.picross-list strong{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.picross-check{flex:none;margin-left:auto;color:var(--accent)}
+@media(max-width:1100px){.picross-layout{grid-template-columns:minmax(0,1fr);gap:28px}.picross-list ul{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}}
+@media(max-width:600px){.footer-game{margin-left:0}.picross-corner{font-size:0}.picross-toolbar{gap:10px}.picross-actions{width:100%}.picross-actions .raised-button{flex:1}.picross-frame{padding:10px;border-radius:18px}.picross-board{--cell:clamp(16px,calc((100vw - 76px - var(--clue-cols) * 15px) / var(--cols)),34px)}.picross-list ul{grid-template-columns:repeat(2,minmax(0,1fr))}.picross-list li button{gap:9px;padding:8px}}

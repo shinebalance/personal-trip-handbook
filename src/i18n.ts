@@ -3,7 +3,7 @@ import type { Locale, Localized } from './types';
 export const text = (value: Localized | undefined, locale: Locale) => typeof value === 'string' ? value : value?.[locale] || value?.ja || '';
 const ja = {
   displayMode: '表示形式', cardView: 'カードで見る', areaMapView: 'エリア地図で見る',
-  subtitle: '私の旅のしおり', spots: '行き先', wishes: '食・買い物', itinerary: '旅の予定', notes: '旅のメモ',
+  subtitle: '私の旅のしおり', picross: 'ひと休みピクロス', spots: '行き先', wishes: '食・買い物', itinerary: '旅の予定', notes: '旅のメモ',
   heroTitle: '気になる場所へ、\n心の向くまま。', heroDescription: '本屋と音楽、ときどき甘いもの。\n私の「行きたい」を集めた、ソウルの旅ノート。',
   photoAlt: '南山公園から見渡す夕暮れのソウル', items: '件', placesLabel: '行きたい場所', wishLabel: '食・買い物リスト',
   search: '名前・エリア・気になるものを検索', allAreas: 'すべてのエリア', allCategories: 'すべて', allPriorities: 'すべての候補',
@@ -25,7 +25,7 @@ const ja = {
 type Dictionary = Omit<typeof ja, 'categories' | 'areas'> & { categories: Record<string, string>; areas: Record<string, string> };
 const ko: Dictionary = {
   displayMode: '보기 방식', cardView: '카드로 보기', areaMapView: '동네 지도 보기',
-  subtitle: '나만의 여행 수첩', spots: '가고 싶은 곳', wishes: '먹거리 · 쇼핑', itinerary: '여행 일정', notes: '여행 메모',
+  subtitle: '나만의 여행 수첩', picross: '쉬어 가는 네모로직', spots: '가고 싶은 곳', wishes: '먹거리 · 쇼핑', itinerary: '여행 일정', notes: '여행 메모',
   heroTitle: '마음이 이끄는 곳으로,\n천천히.', heroDescription: '책과 음악, 그리고 달콤한 간식.\n가고 싶은 곳을 모아 둔 나의 서울 여행 수첩.',
   photoAlt: '남산공원에서 바라본 해 질 무렵의 서울', items: '개', placesLabel: '가고 싶은 곳', wishLabel: '먹거리 · 쇼핑 목록',
   search: '이름 · 동네 · 관심사 검색', allAreas: '모든 동네', allCategories: '전체', allPriorities: '모든 후보',
@@ -46,7 +46,7 @@ const ko: Dictionary = {
 };
 const en: Dictionary = {
   displayMode: 'Display mode', cardView: 'Cards', areaMapView: 'Neighborhood map',
-  subtitle: 'My little travel journal', spots: 'Places to go', wishes: 'Eat & shop', itinerary: 'Itinerary', notes: 'Travel notes',
+  subtitle: 'My little travel journal', picross: 'Picross break', spots: 'Places to go', wishes: 'Eat & shop', itinerary: 'Itinerary', notes: 'Travel notes',
   heroTitle: 'A little curiosity.\nA whole city to explore.', heroDescription: 'Bookshops, records, and something sweet.\nA collection of places for my days in Seoul.',
   photoAlt: 'Seoul at dusk, seen from Namsan Park', items: '', placesLabel: 'Places to go', wishLabel: 'Things to try & buy',
   search: 'Search a name, neighborhood, or interest', allAreas: 'All neighborhoods', allCategories: 'All', allPriorities: 'All plans',
