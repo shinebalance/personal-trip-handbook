@@ -61,13 +61,13 @@
 .raised-button:disabled{opacity:.5;box-shadow:none}
 .raised-button:disabled:hover{background:var(--bg)}
 .picross-frame{width:fit-content;max-width:100%;margin-inline:auto;overflow-x:auto;padding:16px;border-radius:22px;background:#eef4e9;border:1px solid #f6f9f1;box-shadow:var(--out)}
-.picross-board{--cell:clamp(16px,calc((min(100vw - 60px,640px) - 54px - var(--clue-cols) * 15px) / var(--cols)),44px);--grid:#c5d3bc;--grid-strong:#6f8c5c;display:grid;grid-template-columns:auto auto;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;font-variant-numeric:tabular-nums}
+.picross-board{--cell:clamp(16px,calc((min(100vw - 60px,640px) - 54px - var(--clue-cols) * 19px) / var(--cols)),44px);--grid:#c5d3bc;--grid-strong:#6f8c5c;display:grid;grid-template-columns:auto auto;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;font-variant-numeric:tabular-nums}
 .picross-corner{display:flex;align-items:flex-end;justify-content:flex-end;padding:0 9px 8px 0;font:500 12px var(--serif);color:var(--subtle)}
 .col-clues{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));padding-left:2px}
 .row-clues{display:grid;grid-template-rows:repeat(var(--rows),var(--cell));padding-top:2px}
 .col-clue,.row-clue{display:flex;align-items:center;font-size:12px;font-weight:600;color:var(--ink);line-height:1.25;border-radius:8px}
 .col-clue{flex-direction:column;justify-content:flex-end;gap:1px;padding:5px 0 7px;border-radius:8px 8px 0 0}
-.row-clue{justify-content:flex-end;gap:6px;padding:0 9px 0 7px;border-radius:8px 0 0 8px}
+.row-clue{justify-content:flex-end;gap:11px;padding:0 9px 0 7px;border-radius:8px 0 0 8px}
 .col-clue.current,.row-clue.current{background:var(--green)}
 .col-clue.done,.row-clue.done{color:#97a690;font-weight:500}
 .cells{display:grid;grid-template-columns:repeat(var(--cols),var(--cell));grid-template-rows:repeat(var(--rows),var(--cell));border-top:2px solid var(--grid-strong);border-left:2px solid var(--grid-strong);background:#f7faf3}
@@ -107,4 +107,4 @@
 .picross-list strong{display:block;font-size:14px;font-weight:600;color:var(--ink)}
 .picross-check{flex:none;margin-left:auto;color:var(--accent)}
 @media(max-width:1100px){.picross-layout{grid-template-columns:minmax(0,1fr);gap:28px}.picross-list ul{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}}
-@media(max-width:600px){.footer-game{margin-left:0}.picross-corner{font-size:0}.picross-toolbar{gap:10px}.picross-actions{width:100%}.picross-actions .raised-button{flex:1}.picross-frame{padding:10px;border-radius:18px}.picross-board{--cell:clamp(16px,calc((100vw - 76px - var(--clue-cols) * 15px) / var(--cols)),34px)}.picross-list ul{grid-template-columns:repeat(2,minmax(0,1fr))}.picross-list li button{gap:9px;padding:8px}}
+@media(max-width:600px){.footer-game{margin-left:0}.picross-corner{font-size:0}.picross-toolbar{gap:10px}.picross-actions{width:100%}.picross-actions .raised-button{flex:1}.picross-frame{padding:10px;border-radius:18px}.picross-board{--cell:clamp(16px,calc((100vw - 70px - var(--clue-cols) * 18px) / var(--cols)),34px)}.row-clue{gap:10px;padding:0 6px 0 4px}.picross-list ul{grid-template-columns:repeat(2,minmax(0,1fr))}.picross-list li button{gap:9px;padding:8px}}
